@@ -13,7 +13,15 @@ class EstablismentProduct extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('establisment_product', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('establisment_id');
+            $table->unsignedBigInteger('product_id');
+       
+
+            $table->foreign('establisment_id')->references('id')->on('establisments');
+            $table->foreign('product_id')->references('id')->on('products');
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class EstablismentProduct extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('establisment_product');
     }
 }

@@ -13,7 +13,15 @@ class EstablismentUser extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('establisment_user', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('establisment_id');
+       
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('establisment_id')->references('id')->on('establisments');
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class EstablismentUser extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('establisment_user');
     }
 }

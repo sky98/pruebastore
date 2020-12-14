@@ -15,7 +15,17 @@ class CreateEstablismentsTable extends Migration
     {
         Schema::create('establisments', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('nit');
+            $table->string('name');
+            $table->string('department');
+            $table->string('city');
+            $table->string('address');
+            $table->string('telephone');            
+            $table->boolean('state');
+            $table->unsignedBigInteger('inventories_id');
             $table->timestamps();
+
+            $table->foreign('inventories_id')->references('id')->on('inventories');
         });
     }
 

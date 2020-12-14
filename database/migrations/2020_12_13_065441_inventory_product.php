@@ -13,7 +13,15 @@ class InventoryProduct extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('inventory_product', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('inventory_id');
+            $table->unsignedBigInteger('product_id');
+       
+
+            $table->foreign('inventory_id')->references('id')->on('inventories');
+            $table->foreign('product_id')->references('id')->on('products');
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class InventoryProduct extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inventory_product');
     }
 }

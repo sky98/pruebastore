@@ -13,7 +13,18 @@ class ProductSale extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('product_sale', function (Blueprint $table) {
+            $table->id();
+            $table->double('value');
+            $table->integer('amount');
+            $table->double('discount');
+            $table->unsignedBigInteger('sale_id');
+            $table->unsignedBigInteger('product_id');
+            $table->timestamps();
+
+            $table->foreign('sale_id')->references('id')->on('sales');
+            $table->foreign('product_id')->references('id')->on('products');
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ class ProductSale extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('product_sale');
     }
 }
