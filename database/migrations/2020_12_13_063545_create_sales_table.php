@@ -15,9 +15,9 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nit');
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('establisment_id');
+            $table->string('nit')->nullable();
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->unsignedBigInteger('establisment_id')->nullable();
             $table->timestamps();
 
             $table->foreign('employee_id')->references('id')->on('employees');

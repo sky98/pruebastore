@@ -26,12 +26,13 @@ use Illuminate\Support\Str;
 *Send data to users table
 */
 $factory->define(User::class, function (Faker $faker) {
+	static $password;
     return [
     	'nit' =>$faker->unique->randomNumber($nbDigits = NULL, $strict = false),
         'name' => $faker->name,
         'telephone' => $faker->tollFreePhoneNumber,
-        'department' => $faker->addProvider(new Faker\Provider\en_US\departmentName($faker)),
-        'city' => $faker->addProvider(new Faker\Provider\en_US\region($faker)),
+        'department' => $faker->state,
+        'city' => $faker->city,
         'address' => $faker->address,
         'state' => 1,
         'email' => $faker->unique()->safeEmail,
@@ -45,10 +46,10 @@ $factory->define(User::class, function (Faker $faker) {
 /*
 *Send data to categories table
 */
-$factory->define(categories::class, function(Generator $faker){
+$factory->define(categories::class, function(Faker $faker){
     return [
         'name' => $faker->name,
-        'description' => $faker->text,
+        'description' => $faker->text($maxNbChars = 200),
     ];
 });
 
@@ -56,7 +57,7 @@ $factory->define(categories::class, function(Generator $faker){
 /*
 *Send data to products table
 */
-$factory->define(products::class, function(Generator $faker){
+$factory->define(products::class, function(Faker $faker){
     return [
         'nit' =>$faker->unique->randomNumber($nbDigits = NULL, $strict = false),
         'name' => $faker->name,
@@ -72,7 +73,7 @@ $factory->define(products::class, function(Generator $faker){
 /*
 *Send data to inventories table
 */
-$factory->define(inventories::class, function(Generator $faker){
+$factory->define(inventories::class, function(Faker $faker){
     return [
         'stock' => $faker->numberBetween($min = 10, $max = 200),
         'minimum_stock' => $faker->numberBetween($min = 10, $max = 20),
@@ -83,12 +84,12 @@ $factory->define(inventories::class, function(Generator $faker){
 /*
 *Send data to establisments table
 */
-$factory->define(establisments::class, function(Generator $faker){
+$factory->define(establisments::class, function(Faker $faker){
     return [
         'nit' =>$faker->unique->randomNumber($nbDigits = NULL, $strict = false),
         'name' => $faker->name,
-        'department' => $faker->addProvider(new Faker\Provider\en_US\departmentName($faker)),
-        'city' => $faker->addProvider(new Faker\Provider\en_US\region($faker)),
+        'department' => $faker->state,
+        'city' => $faker->city,
         'address' => $faker->address,
         'telephone' => $faker->tollFreePhoneNumber,
         'state' => 1,
@@ -101,12 +102,13 @@ $factory->define(establisments::class, function(Generator $faker){
 *Send data to employees table
 */
 $factory->define(employees::class, function (Faker $faker) {
+	static $password;
     return [
     	'nit' =>$faker->unique->randomNumber($nbDigits = NULL, $strict = false),
         'name' => $faker->name,
         'telephone' => $faker->tollFreePhoneNumber,
-        'department' => $faker->addProvider(new Faker\Provider\en_US\departmentName($faker)),
-        'city' => $faker->addProvider(new Faker\Provider\en_US\region($faker)),
+        'department' => $faker->state,
+        'city' => $faker->city,
         'address' => $faker->address,
         'state' => 1,
         'email' => $faker->unique()->safeEmail,
@@ -119,10 +121,10 @@ $factory->define(employees::class, function (Faker $faker) {
 /*
 *Send data to sales table
 */
-$factory->define(sales::class, function(Generator $faker){
+$factory->define(sales::class, function(Faker $faker){
     return [
         'nit' => $faker->bothify('##??##??##??##??'),
-        'employee_id' => $faker->numberBetween($min = 1, $max = 50),
+        'employee_id' => $faker->numberBetween($min = 1, $max = 20),
         'establisment_id' => 1,
     ];
 });
