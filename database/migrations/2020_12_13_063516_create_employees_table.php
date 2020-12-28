@@ -18,9 +18,12 @@ class CreateEmployeesTable extends Migration
             $table->bigInteger('nit');
             $table->string('name');
             $table->string('telephone');
+            $table->string('department');
+            $table->string('city');
             $table->string('address');
             $table->boolean('state');
-            $table->string('email')->unique();
+            $table->string('email', 60)->unique();
+            $table->string('password');
             $table->unsignedBigInteger('establisment_id');
             $table->timestamps();
 
