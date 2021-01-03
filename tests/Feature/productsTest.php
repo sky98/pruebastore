@@ -3,18 +3,17 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class productsTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     @test
      */
-    public function testBasicTest()
+    public function Example()
     {
-        $response = $this->get('/');
+        $response = $this->get('/api/products');
 
         $response->assertStatus(200);
     }
