@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
 
 class employees extends Model
 {
 
-    use HasRoles;
+    use HasRoles, HasApiTokens;
     
     protected $table = "employees";
 

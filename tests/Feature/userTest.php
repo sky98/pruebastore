@@ -6,14 +6,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class productsTest extends TestCase
+class userTest extends TestCase
 {
     /**
-     @test
+     * @test
+     *
+     * 
      */
-    /*public function index_products()
+   /* public function testExample()
     {
-        $response = $this->get('/api/products');
+        $response = $this->get('/api/users');
 
         $response->assertStatus(200);
     }*/
